@@ -189,26 +189,116 @@ if let surveyAnswer = surveyAnswer{
 
 //Classes and Structs
 
+struct ScreenLocation{
+    var x: Int
+    var y: Int
+}
 
+let location = ScreenLocation(x: 0, y: 0)
+var location2 = location
+location2.x = 10
+
+location2.x
+location.x
+
+class Person{
+    
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int = 0) {
+        self.name = name
+        self.age = age
+    }
+}
+
+let myPerson = Person(name: "Annie", age: 10)
+
+let myFriend = Person(name: "Joe")
+
+var otherPerson = myPerson
+otherPerson.age = 100
+myPerson.age
 
 //Protocols
 
+protocol DogYears{
+    var age : Int { set get }
+    
+    func ageInDogYears() -> Int
+}
 
+class Dog: DogYears {
+    var age = 1
+    func ageInDogYears() -> Int {
+        return age * 7
+    }
+}
 
 //Inheritance
 
+class Student: Person, DogYears{
+    
+    var studentID: String?
+    var classNumber: Int?
+    
+    func ageInDogYears() -> Int {
+        return age * 7
+    }
+}
+
+let student1 = Student(name: "Mike")
+student1.classNumber = 401
+student1.studentID = "s786sf67822g29"
 
 
 //Extensions
 
+extension DogYears {
+    func ageInDogYears() -> Int{
+        return age * 7
+    }
+}
 
+extension String{
+    func length() -> Int{
+        return self.characters.count
+    }
+}
+
+let myString = "This is a test string"
+myString.length()
 
 //Functions
 
+func greet(person: String = "Errbody") -> String {
+    let greeting = "Hello, " + person + "!"
+    return greeting
+}
 
+greet(person: "Annie")
+greet()
+
+func addThese(numbers: Int...) -> Int{
+var total = 0
+
+for number in numbers{
+    total += number
+}
+
+return total
+}
+
+addThese(numbers: 0,1,2,4,5)
+
+func changesStuff(number:Int, callback:(Int) -> ()){
+    callback(number * number)
+}
 
 //Closures
 
+changesStuff(number: 10) { (results) in
+}
 
 
 
